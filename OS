@@ -1,0 +1,18 @@
+linux 
+check /etc/profiles
+2 scripts
+cat scripts
+check /bashrc
+ss -tina for suspicous port 
+get pid of service running the port 
+(sudo lsof -i :port#)
+crontab -l
+
+windows 
+netstat -ano for suspicous port
+regedit check runone and runkeys
+autoruns
+inregistry spotify.exe
+go into sysinternals
+in powershell
+strings.exe on  full path of spotify.exe
