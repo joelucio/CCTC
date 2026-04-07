@@ -1,0 +1,15 @@
+1. Establish connection to jump
+ssh -MS /tmp/jump <user>@<jump ip> (-fN)
+2. from jump, scan target network:
+for i in {1...254}; do (ping -c 1 x.x.x.x | grep "bytes from" &); done    (network scan)
+3. build proxychains 
+ssh -s /tmp/jump jump -O forward -D9050
+4. port enumeration
+proxychains nmap -Pn -sV -n -T5 <target ip>
+5. use results to build port forward
+ssh -S /tmp/jump jump -O forward -D9050 -L <local port>:target ip:<target port>
+6. Build into T1
+ssh -MS /tmp/T1 <user>@localhost -p <local port>
+7. port forward into T1
+ssh -S /tmp/T1 T1 -O forward -D9050 -L<local port>:target ip:<target port>
+8. repeat DEEPER
