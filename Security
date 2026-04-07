@@ -1,7 +1,7 @@
 1. Establish connection to jump
 ssh -MS /tmp/jump <user>@<jump ip> (-fN)
 2. from jump, scan target network:
-for i in {1...254}; do (ping -c 1 x.x.x.x | grep "bytes from" &); done    (network scan)
+for i in {1..254}; do (ping -c 1 x.x.x.x | grep "bytes from" &); done    (network scan)
 3. build proxychains 
 ssh -s /tmp/jump jump -O forward -D9050
 4. port enumeration
